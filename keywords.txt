@@ -1,0 +1,53 @@
+  
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+UnifiedLcdMode      KEYWORD1
+lcdFunctionReturnValue KEYWORD1
+UnifiedLCD          KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin		KEYWORD2
+clear	KEYWORD2
+home     KEYWORD2
+setMode	KEYWORD2
+createChar		KEYWORD2
+createCharFromProgmem		KEYWORD2
+setCursor		KEYWORD2
+write		KEYWORD2
+command		KEYWORD2
+setBrightness		KEYWORD2
+setBacklightRGB		KEYWORD2
+blinkBacklight		KEYWORD2
+noBlinkBacklight		KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+LCD_HAL_USE_GROVE	LITERAL1
+LCD_HAL_USE_LIQUID_CRYSTAL	LITERAL1
+LCD_HAL_USE_ACM1602NI	LITERAL1
+NO_DISPLAY	LITERAL1
+ON_DISPLAY	LITERAL1
+NO_BLINK	LITERAL1
+BLINK	LITERAL1
+NO_CURSOR	LITERAL1
+CURSOR	LITERAL1
+SCROLL_LEFT	LITERAL1
+SCROLL_RIGHT	LITERAL1
+LEFT_TO_RIGHT	LITERAL1
+RIGHT_TO_LEFT	LITERAL1
+AUTO_SCROLL	LITERAL1
+NO_AUTO_SCROLL	LITERAL1
+FUNCTION_UNSUPPORTED	LITERAL1
+FUNCTION_SUCCESS	LITERAL1
+FUNCTION_FAIL	LITERAL1
+
+
+
