@@ -1,12 +1,16 @@
 #ifndef __UNIFIED_CHARACTER_DISPLAY_H__
 #define __UNIFIED_CHARACTER_DISPLAY_H__
 
-#include "UnifiedCharacterDisplay_config.h"
+
 
 
 #define LCD_HAL_USE_GROVE
-//#define LCD_HAL_USE_LIQUID_CRYSTAL
-//#define LCD_HAL_USE_ACM1602NI
+#define LCD_HAL_USE_LIQUID_CRYSTAL
+#define LCD_HAL_USE_ACM1602NI
+
+
+#include "UnifiedCharacterDisplay_config.h"
+
 
 #ifdef LCD_HAL_USE_GROVE
 #include <Wire.h>
