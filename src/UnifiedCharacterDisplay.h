@@ -30,7 +30,7 @@
 enum UnifiedLcdType {
   GROVE_LCD_RGB_BACKLIGHT =1, // https://github.com/Seeed-Studio/Grove_LCD_RGB_Backlight/
   LIQUID_CRYSTAL,             // LiquidCrystal Library for Arduino https://github.com/arduino-libraries/LiquidCrystal
-  LIQUID_CRYSTAL_I2C          // https://github.com/furushei/ACM1602NI-Arduino
+  ACM1602NI                   // https://github.com/furushei/ACM1602NI-Arduino
 };
 
 enum UnifiedLcdMode {
@@ -45,7 +45,9 @@ enum UnifiedLcdMode {
   LEFT_TO_RIGHT,
   RIGHT_TO_LEFT,
   AUTO_SCROLL,
-  NO_AUTO_SCROLL
+  NO_AUTO_SCROLL,
+  BLINK_BACKLIGHT,
+  NO_BLINK_BACKLIGHT
 };
 
 enum lcdFunctionReturnValue {
@@ -82,12 +84,10 @@ public:
   lcdFunctionReturnValue setCursor(uint8_t, uint8_t);
   size_t write(uint8_t);
   lcdFunctionReturnValue command(uint8_t);
-  lcdFunctionReturnValue setBrightness(uint8_t = 2, uint8_t = 0x40, uint8_t = 0xc0); //BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7;
+  //lcdFunctionReturnValue setBrightness(uint8_t = 2, uint8_t = 0x40, uint8_t = 0xc0); //BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7;
   // color control
   lcdFunctionReturnValue setBacklightRGB(unsigned char r, unsigned char g, unsigned char b); // set rgb
-  // blink the LED backlight
-  lcdFunctionReturnValue blinkBacklight(void);
-  lcdFunctionReturnValue noBlinkBacklight(void);
+
 
 private:
   lcdFunctionReturnValue noDisplay(void);
@@ -102,6 +102,9 @@ private:
   lcdFunctionReturnValue rightToLeft(void);
   lcdFunctionReturnValue autoscroll(void);
   lcdFunctionReturnValue noAutoscroll(void);
+  // blink the LED backlight
+  lcdFunctionReturnValue blinkBacklight(void);
+  lcdFunctionReturnValue noBlinkBacklight(void);
 #if defined(LCD_HAL_USE_GROVE) || defined(LCD_HAL_USE_ACM1602NI)
   TwoWire  _i2c;
 #endif /* LCD_HAL_USE_GROVE || LCD_HAL_USE_ACM1602NI */
