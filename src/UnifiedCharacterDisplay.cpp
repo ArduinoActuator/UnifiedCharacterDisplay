@@ -12,7 +12,7 @@ UnifiedLCD::UnifiedLCD(rgb_lcd* lcd, UnifiedLcdType type, TwoWire wire):
 
 #ifdef LCD_HAL_USE_ACM1602NI
 UnifiedLCD::UnifiedLCD(ACM1602NI* lcd, UnifiedLcdType type):
-  _ACM1602NI(lcd),
+  _liquid_crystal_i2c(lcd),
   _type(type)
 {}
 #endif /* LCD_HAL_USE_ACM1602NI */
@@ -32,8 +32,8 @@ lcdFunctionReturnValue UnifiedLCD::begin(uint8_t cols, uint8_t rows, uint8_t cha
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->begin(cols, rows);
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->begin(cols, rows);
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -53,8 +53,8 @@ lcdFunctionReturnValue UnifiedLCD::clear(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->clear();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->clear();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -74,8 +74,8 @@ lcdFunctionReturnValue UnifiedLCD::home(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->home();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->home();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -115,8 +115,8 @@ lcdFunctionReturnValue UnifiedLCD::noDisplay(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->noDisplay();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->noDisplay();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -136,8 +136,8 @@ lcdFunctionReturnValue UnifiedLCD::display(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->display();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->display();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -157,8 +157,8 @@ lcdFunctionReturnValue UnifiedLCD::noBlink(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->noBlink();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->noBlink();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -178,8 +178,8 @@ lcdFunctionReturnValue UnifiedLCD::blink(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->blink();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->blink();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -199,8 +199,8 @@ lcdFunctionReturnValue UnifiedLCD::noCursor(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->noCursor();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->noCursor();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -220,8 +220,8 @@ lcdFunctionReturnValue UnifiedLCD::cursor(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->cursor();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->cursor();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -241,8 +241,8 @@ lcdFunctionReturnValue UnifiedLCD::scrollDisplayLeft(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->scrollDisplayLeft();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->scrollDisplayLeft();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -262,8 +262,8 @@ lcdFunctionReturnValue UnifiedLCD::scrollDisplayRight(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->scrollDisplayRight();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->scrollDisplayRight();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -283,8 +283,8 @@ lcdFunctionReturnValue UnifiedLCD::leftToRight(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->leftToRight();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->leftToRight();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -304,8 +304,8 @@ lcdFunctionReturnValue UnifiedLCD::rightToLeft(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->rightToLeft();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->rightToLeft();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -325,8 +325,8 @@ lcdFunctionReturnValue UnifiedLCD::autoscroll(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->autoscroll();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->autoscroll();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -346,8 +346,8 @@ lcdFunctionReturnValue UnifiedLCD::noAutoscroll(void) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->noAutoscroll();
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->noAutoscroll();
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -367,8 +367,8 @@ lcdFunctionReturnValue UnifiedLCD::createChar(uint8_t c, uint8_t data[]) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->createChar(c, data);
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->createChar(c, data);
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -388,8 +388,8 @@ lcdFunctionReturnValue UnifiedLCD::createCharFromProgmem(uint8_t c, uint8_t * p)
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->createChar(c, p);
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->createChar(c, p);
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -409,8 +409,8 @@ lcdFunctionReturnValue UnifiedLCD::setCursor(uint8_t col, uint8_t row) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->setCursor(col, row);
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->setCursor(col, row);
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
@@ -429,8 +429,8 @@ size_t UnifiedLCD::write(uint8_t value) {
       return _lcd->write(value);
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      return _ACM1602NI->write(value);
+    case ACM1602NI_TYPE:
+      return _liquid_crystal_i2c->write(value);
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
     case LIQUID_CRYSTAL:
@@ -448,8 +448,8 @@ lcdFunctionReturnValue UnifiedLCD::command(uint8_t value) {
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_GROVE */
 #ifdef LCD_HAL_USE_ACM1602NI
-    case ACM1602NI:
-      _ACM1602NI->command(value);
+    case ACM1602NI_TYPE:
+      _liquid_crystal_i2c->command(value);
       return FUNCTION_SUCCESS;
 #endif /* LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL

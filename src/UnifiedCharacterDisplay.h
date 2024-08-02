@@ -23,14 +23,14 @@
 
 #ifdef LCD_HAL_USE_ACM1602NI
 #include <Wire.h>
-#include <ACM1602NI.h>
+#include "ACM1602NI.h"
 #endif /* LCD_HAL_USE_ACM1602NI */
 
 
 enum UnifiedLcdType {
   GROVE_LCD_RGB_BACKLIGHT =1, // https://github.com/Seeed-Studio/Grove_LCD_RGB_Backlight/
   LIQUID_CRYSTAL,             // LiquidCrystal Library for Arduino https://github.com/arduino-libraries/LiquidCrystal
-  ACM1602NI                   // https://github.com/furushei/ACM1602NI-Arduino
+  ACM1602NI_TYPE              // https://github.com/furushei/ACM1602NI-Arduino
 };
 
 enum UnifiedLcdMode {
@@ -63,7 +63,7 @@ public:
 #endif /* LCD_HAL_USE_GROVE  */
 
 #ifdef LCD_HAL_USE_ACM1602NI
-  UnifiedLCD(ACM1602NI* lcd, UnifiedLcdType type);
+  UnifiedLCD(ACM1602NI * lcd, UnifiedLcdType type);
 #endif /* LCD_HAL_USE_ACM1602NI */
 
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
