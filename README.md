@@ -1,23 +1,56 @@
 # UnifiedCharacterDisplay
 
+このHardware Abstraction Layer(HAL)は，キャラクタディスプレイのデバイスドライバのAPIを
+統一するためのラッパである．
 
-## 外部リンク
+## 動作確認済みデバイス
+
+- [Grove - LCD RGB Backlight][Grove_LCD_RGB_Backlight]
+- [LCDキャラクターディスプレイモジュール(16×2行バックライト付)][SC1602BSLB]
+- [I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付][ACM1602NI]
+
+
+## 使い方
+このライブラリは，外部のデバイスドライバのラッパとして実装されているため，
+特にカスタマイズしないと複数のライブラリを取り込まれてプログラムサイズが
+大きくなってしまう．
+
+これを防止するためには，```UnifiedCharacterDisplay_config.h```の```#undef```を有効化して，
+不要なものを取り込まれないようにする．以下の例では，全ての```#undef```がコメントアウトされているため，
+全てのデバイスドライバを取り込む設定になっている．
+
+```C:UnifiedCharacterDisplay_config.h
+#ifndef __UNIFIED_CHARACTER_DISPLAY_CONFIG_H__
+#define __UNIFIED_CHARACTER_DISPLAY_CONFIG_H__
+//#undef LCD_HAL_USE_GROVE
+//#undef LCD_HAL_USE_LIQUID_CRYSTAL
+//#undef LCD_HAL_USE_ACM1602NI
+#endif /* __UNIFIED_CHARACTER_DISPLAY_CONFIG_H__ */
+```
+
+なお，取り込まれるライブラリは以下の3種類
+- [Grove - LCD RGB Backlight Library][Grove_LCD_RGB_BacklightLibrary] : 上記```LCD_HAL_USE_GROVE```に対応
+- [LiquidCrystal Library for Arduino][LiquidCrystal_Library] : 上記```LCD_HAL_USE_LIQUID_CRYSTAL```に対応
+- [Arduino ACM1602NI library][ACM1602NI_Library] : 上記```LCD_HAL_USE_ACM1602NI```に対応
+
+
+<!-- 以下は，外部リンクの定義 
 - Adafruit Unified Sensor Driver - [https://github.com/adafruit/Adafruit_Sensor][AdafruitUSD]
-- Groveシールド - [https://www.seeedstudio.com/Base-Shield-V2-p-1378.html][shield]
-- Arduino M0 Pro - [https://store.arduino.cc/usa/arduino-m0-pro][M0Pro]
-- Arduino Due - [https://store.arduino.cc/usa/arduino-due][Due]
-- Arduino Uno R3 - [https://store.arduino.cc/usa/arduino-uno-rev3][Uno]
-- Arduino Uno WiFi - [https://store.arduino.cc/usa/arduino-uno-wifi-rev2][UnoWiFi]
-- Arduino Leonardo Ethernet - [https://store.arduino.cc/usa/arduino-leonardo-eth][LeonardoEth]
-- Arduino Mega2560 R3 - [https://store.arduino.cc/usa/arduino-mega-2560-rev3][Mega]
-- Arduino Pro mini 328 - 3.3V/8MHz - [https://www.sparkfun.com/products/11114][ProMini]
-- ESPr developer - [https://www.switch-science.com/catalog/2652/][ESPrDev]
-- ESPr Developer用GROVEシールド - [https://www.switch-science.com/catalog/2811/][ESPrDevShield]
-- ESPr one 32 - [https://www.switch-science.com/catalog/3555/][ESPrOne32]
-- Grove - [https://www.seeedstudio.io/category/Grove-c-1003.html][Grove]
-- Seed Studio - [https://www.seeedstudio.io/][SeedStudio]
-- Sparkfun Electronics - [https://www.sparkfun.com/][Sparkfun]
-- スイッチサイエンス - [https://www.switch-science.com/][SwitchScience]
+-->
+
+<!-- Grove - LCD RGB Backlight Library -->
+[Grove_LCD_RGB_BacklightLibrary]:https://github.com/Seeed-Studio/Grove_LCD_RGB_Backlight
+<!-- Grove - LCD RGB Backlight -->
+[Grove_LCD_RGB_Backlight]:https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/
+<!-- LiquidCrystal Library for Arduino -->
+[LiquidCrystal_Library]:https://github.com/arduino-libraries/LiquidCrystal
+<!-- LCDキャラクターディスプレイモジュール(16×2行バックライト付) -->
+[SC1602BSLB]:https://akizukidenshi.com/catalog/g/g100038/
+<!-- Arduino ACM1602NI library -->
+[ACM1602NI_Library]:https://github.com/furushei/ACM1602NI-Arduino
+<!-- I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付 -->
+[ACM1602NI]:https://akizukidenshi.com/catalog/g/g105693/
+
 
 <!-- 以下は，外部リンクの定義 -->
 [GroveBarometerSensorBMP180]:http://wiki.seeedstudio.com/Grove-Barometer_Sensor-BMP180/
