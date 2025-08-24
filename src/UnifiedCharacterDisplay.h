@@ -18,6 +18,9 @@
 #endif /* LCD_HAL_USE_GROVE */
 
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
+#ifndef __AVR__
+#include <Wire.h>
+#endif /* __AVR__ */
 #include "LiquidCrystal.h"
 #endif /* LCD_HAL_USE_LIQUID_CRYSTAL */
 
@@ -27,13 +30,13 @@
 #endif /* LCD_HAL_USE_ACM1602NI */
 
 
-enum UnifiedLcdType {
+typedef enum {
   GROVE_LCD_RGB_BACKLIGHT =1, // https://github.com/Seeed-Studio/Grove_LCD_RGB_Backlight/
   LIQUID_CRYSTAL,             // LiquidCrystal Library for Arduino https://github.com/arduino-libraries/LiquidCrystal
   ACM1602NI_TYPE              // https://github.com/furushei/ACM1602NI-Arduino
-};
+} UnifiedLcdType;
 
-enum UnifiedLcdMode {
+typedef enum {
   NO_DISPLAY = 1 ,
   ON_DISPLAY,
   NO_BLINK,
@@ -48,26 +51,46 @@ enum UnifiedLcdMode {
   NO_AUTO_SCROLL,
   BLINK_BACKLIGHT,
   NO_BLINK_BACKLIGHT
-};
+} UnifiedLcdMode;
 
-enum lcdFunctionReturnValue {
-  FUNCTION_UNSUPPORTED = 1,
-  FUNCTION_SUCCESS,
-  FUNCTION_FAIL,
-};
+typedef enum {
+  LCD_FUNCTION_UNSUPPORTED = 1,
+  LCD_FUNCTION_SUCCESS,
+  LCD_FUNCTION_FAIL,
+} lcdFunctionReturnValue;
 
 class UnifiedLCD : public Print {
 public:
 #ifdef LCD_HAL_USE_GROVE
+#ifdef __SAMD21G18A__
+  UnifiedLCD(rgb_lcd* lcd, UnifiedLcdType type, arduino::TwoWire  wire);
+#else /*__SAMD21G18A__*/
   UnifiedLCD(rgb_lcd* lcd, UnifiedLcdType type, TwoWire  wire);
+#endif /* __SAMD21G18A__ */
 #endif /* LCD_HAL_USE_GROVE  */
 
 #ifdef LCD_HAL_USE_ACM1602NI
+#ifdef __AVR__
   UnifiedLCD(ACM1602NI * lcd, UnifiedLcdType type);
+#else /* __AVR__ */
+#ifdef __SAMD21G18A__
+  UnifiedLCD(ACM1602NI * lcd, UnifiedLcdType type, arduino::TwoWire  wire=Wire);
+#else /*__SAMD21G18A__*/
+  UnifiedLCD(ACM1602NI * lcd, UnifiedLcdType type, TwoWire  wire=Wire);
+#endif /* __SAMD21G18A__ */
+#endif /* __AVR__ */
 #endif /* LCD_HAL_USE_ACM1602NI */
 
 #ifdef LCD_HAL_USE_LIQUID_CRYSTAL
+#ifdef __AVR__
   UnifiedLCD(LiquidCrystal* lcd, UnifiedLcdType type);
+#else /* __AVR__ */
+#ifdef __SAMD21G18A__
+  UnifiedLCD(LiquidCrystal* lcd, UnifiedLcdType type, arduino::TwoWire  wire=Wire);
+#else /*__SAMD21G18A__*/
+  UnifiedLCD(LiquidCrystal* lcd, UnifiedLcdType type, TwoWire  wire=Wire);
+#endif /* __SAMD21G18A__ */
+#endif /* __AVR__ */
 #endif /* LCD_HAL_USE_LIQUID_CRYSTAL */
 
 #if defined(LCD_HAL_USE_GROVE) || defined(LCD_HAL_USE_LIQUID_CRYSTAL)
@@ -80,7 +103,7 @@ public:
   lcdFunctionReturnValue home(void);
   lcdFunctionReturnValue setMode(UnifiedLcdMode mode);
   lcdFunctionReturnValue createChar(uint8_t, uint8_t[]);
-  lcdFunctionReturnValue createCharFromProgmem(uint8_t, uint8_t *);
+  lcdFunctionReturnValue createCharFromProgmem(uint8_t, const uint8_t *);
   lcdFunctionReturnValue setCursor(uint8_t, uint8_t);
   size_t write(uint8_t);
   lcdFunctionReturnValue command(uint8_t);
@@ -106,7 +129,11 @@ private:
   lcdFunctionReturnValue blinkBacklight(void);
   lcdFunctionReturnValue noBlinkBacklight(void);
 #if defined(LCD_HAL_USE_GROVE) || defined(LCD_HAL_USE_ACM1602NI)
+#ifdef __SAMD21G18A__
+  arduino::TwoWire  _i2c;
+#else /* __SAMD21G18A__ */
   TwoWire  _i2c;
+#endif /* __SAMD21G18A__ */
 #endif /* LCD_HAL_USE_GROVE || LCD_HAL_USE_ACM1602NI */
 #ifdef LCD_HAL_USE_GROVE
   rgb_lcd* _lcd;

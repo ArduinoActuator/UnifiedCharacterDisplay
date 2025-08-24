@@ -2,7 +2,7 @@
 #include "UnifiedCharacterDisplay.h"
 
 //#define USE_GROVE
-#define USE_LIQUID_CRYSTAL
+//#define USE_LIQUID_CRYSTAL
 #define USE_ACM1602NI
 
 #ifdef USE_GROVE
@@ -23,7 +23,7 @@ UnifiedLCD liquid_crystal(&liquid_crystal_h, LIQUID_CRYSTAL);
 
 #ifdef USE_ACM1602NI
 ACM1602NI liquid_crystal_i2c_h;  // set the LCD address to 0x27 for a 16 chars and 2 line display
-UnifiedLCD liquid_crystal_i2c(&liquid_crystal_i2c_h, LIQUID_CRYSTAL_I2C);
+UnifiedLCD liquid_crystal_i2c(&liquid_crystal_i2c_h, ACM1602NI_TYPE);
 #endif /* USE_ACM1602NI */
 
 void clearDisplay(void){
