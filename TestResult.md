@@ -3,16 +3,48 @@
 
 ## 動作確認結果のまとめ
 
+<!--
+
 
 |機種名|[Grove - LCD RGB Backlight][Grove_LCD_RGB_Backlight]|[LCDキャラクターディスプレイモジュール(16×2行バックライト付)][SC1602BSLB]|[I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付][ACM1602NI]|[LCDキャラクターディスプレイモジュール 20×4行 バックライト付][SC2004CSLB]|
 |---|---|---|---|---|
 |[Arduino Nano ESP32][NanoESP32]|✕|◯|◯|◯|
-|[Arduino Mega 2560][Mega2560]|▲1|◯|◯|◯|
+|[Arduino Mega 2560][Mega2560]|▲1|◯|－|◯|
 |[Arduino M0 pro][M0Pro]|✕|◯|✕|◯|
 |[Arduino UNO R4 Minima][UnoR4Minima]|✕|✕|✕|✕|
 |[Arduino Nano 33 IoT][Nano33IoT]|✕|✕|✕|✕|
 |[Arduino Giga R1 Wifi][GigaR1WiFi]|✕|◯|✕|◯|
 |[Ardino MKR Zero][MKRZero]|✕|◯|✕|◯|
+|[Arduino Nano RP2040 Connect][NanoRP2040Connect]|||||
+
+- 1 : ``createChar()``で一部文字化けする．コンパイル時のメッセージ(以下の通り)を見ると，メモリ不足が疑われる．
+
+```
+最大253952バイトのフラッシュメモリのうち、スケッチが17856バイト（7%）を使っています。
+最大8192バイトのRAMのうち、グローバル変数が6115バイト（74%）を使っていて、ローカル変数で2077バイト使うことができます。
+```
+
+-->
+
+
+|名称|動作電圧(V)|
+|---|---|
+|[Grove - LCD RGB Backlight][Grove_LCD_RGB_Backlight]|5|
+|[LCDキャラクターディスプレイモジュール(16×2行バックライト付)][SC1602BSLB]|5|
+|[I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付][ACM1602NI]|3.3|
+|[LCDキャラクターディスプレイモジュール 20×4行 バックライト付][SC2004CSLB]|5|
+
+
+
+|機種名|[Grove - LCD RGB Backlight][Grove_LCD_RGB_Backlight]|[LCDキャラクターディスプレイモジュール(16×2行バックライト付)][SC1602BSLB]|[I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付][ACM1602NI]|[LCDキャラクターディスプレイモジュール 20×4行 バックライト付][SC2004CSLB]|
+|---|---|---|---|---|
+|[Arduino Nano ESP32][NanoESP32]|－|－|◯|－|
+|[Arduino Mega 2560][Mega2560]|▲1|◯|－|◯|
+|[Arduino M0 pro][M0Pro]|－|－|✕|－|
+|[Arduino UNO R4 Minima][UnoR4Minima]|✕|✕|－|✕|
+|[Arduino Nano 33 IoT][Nano33IoT]|－|－|✕|－|
+|[Arduino Giga R1 Wifi][GigaR1WiFi]|－|－|✕|－|
+|[Ardino MKR Zero][MKRZero]|－|－|✕|－|
 |[Arduino Nano RP2040 Connect][NanoRP2040Connect]|||||
 
 - 1 : ``createChar()``で一部文字化けする．コンパイル時のメッセージ(以下の通り)を見ると，メモリ不足が疑われる．
@@ -388,7 +420,7 @@ RIGHT_TO_LEFT,
 |[Arduino Nano ESP32][NanoESP32]|✕|◯|◯|◯|
 |[Arduino Mega 2560][Mega2560]|◯|◯|◯|◯|
 |[Arduino M0 pro][M0Pro]|✕|◯|✕|◯|
-|[Arduino UNO R4 Minima][UnoR4Minima]|✕|✕|✕|✕|
+|[Arduino UNO R4 Minima][UnoR4Minima]|✕|◯|✕|◯|
 |[Arduino Nano 33 IoT][Nano33IoT]|✕|✕|✕|✕|
 |[Arduino Giga R1 Wifi][GigaR1WiFi]|✕|◯|✕|◯|
 |[Ardino MKR Zero][MKRZero]|✕|◯|✕|◯|
