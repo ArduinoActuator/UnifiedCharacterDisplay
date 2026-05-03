@@ -26,26 +26,53 @@
 
 -->
 
-
 |名称|動作電圧(V)|
 |---|---|
-|[Grove - LCD RGB Backlight][Grove_LCD_RGB_Backlight]|5|
-|[LCDキャラクターディスプレイモジュール(16×2行バックライト付)][SC1602BSLB]|5|
+|[LCDキャラクターディスプレイ 16×2行 3.3V仕様 バックライト付][SC1602BSLB3V3]|3.3|
 |[I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付][ACM1602NI]|3.3|
+|[LCDキャラクターディスプレイモジュール(16×2行バックライト付)][SC1602BSLB]|5|
 |[LCDキャラクターディスプレイモジュール 20×4行 バックライト付][SC2004CSLB]|5|
+|[I2C接続キャラクターLCDモジュール 20×4行 バックライト付][ACM2004]|5|
+|[Grove - LCD RGB Backlight][Grove_LCD_RGB_Backlight]|5|
+
+|機種名|[LCDキャラクターディスプレイモジュール(16×2行バックライト付)][SC1602BSLB]|[LCDキャラクターディスプレイモジュール 20×4行 バックライト付][SC2004CSLB]|[I2C接続キャラクターLCDモジュール 20×4行 バックライト付][ACM2004]|
+|---|---|---|---|
+|[Arduino Nano ESP32][NanoESP32]|-|-|-|
+|[Arduino Mega 2560][Mega2560]|◯|◯|◯|
+|[Arduino M0 pro][M0Pro]|-|-|-|
+|[Arduino UNO R4 Minima][UnoR4Minima]|✕|✕|✕|
+|[Arduino Nano 33 IoT][Nano33IoT]|-|-|-|
+|[Arduino Giga R1 Wifi][GigaR1WiFi]|-|-|-|
+|[Ardino MKR Zero][MKRZero]|-|-|-|
+|[Arduino Nano RP2040 Connect][NanoRP2040Connect]||||
+
+
+|機種名|[LCDキャラクターディスプレイモジュール(16×2行バックライト付)][SC1602BSLB3V3]|[I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付][ACM1602NI]|
+|---|---|---|
+|[Arduino Nano ESP32][NanoESP32]|◯|◯|
+|[Arduino Mega 2560][Mega2560]|-|-|
+|[Arduino M0 pro][M0Pro]|◯|✕|
+|[Arduino UNO R4 Minima][UnoR4Minima]|-|-|
+|[Arduino Nano 33 IoT][Nano33IoT]|✕|✕|
+|[Arduino Giga R1 Wifi][GigaR1WiFi]|◯|✕|
+|[Ardino MKR Zero][MKRZero]|◯|✕|
+|[Arduino Nano RP2040 Connect][NanoRP2040Connect]|||
 
 
 
-|機種名|[Grove - LCD RGB Backlight][Grove_LCD_RGB_Backlight]|[LCDキャラクターディスプレイモジュール(16×2行バックライト付)][SC1602BSLB]|[I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付][ACM1602NI]|[LCDキャラクターディスプレイモジュール 20×4行 バックライト付][SC2004CSLB]|
-|---|---|---|---|---|
-|[Arduino Nano ESP32][NanoESP32]|－|－|◯|－|
-|[Arduino Mega 2560][Mega2560]|▲1|◯|－|◯|
-|[Arduino M0 pro][M0Pro]|－|－|✕|－|
-|[Arduino UNO R4 Minima][UnoR4Minima]|✕|✕|－|✕|
-|[Arduino Nano 33 IoT][Nano33IoT]|－|－|✕|－|
-|[Arduino Giga R1 Wifi][GigaR1WiFi]|－|－|✕|－|
-|[Ardino MKR Zero][MKRZero]|－|－|✕|－|
-|[Arduino Nano RP2040 Connect][NanoRP2040Connect]|||||
+
+|機種名|[Grove - LCD RGB Backlight][Grove_LCD_RGB_Backlight]|
+|---|---|
+|[Arduino Nano ESP32][NanoESP32]|✕|
+|[Arduino Mega 2560][Mega2560]|▲1|
+|[Arduino M0 pro][M0Pro]|✕|
+|[Arduino UNO R4 Minima][UnoR4Minima]|✕|
+|[Arduino Nano 33 IoT][Nano33IoT]|✕|
+|[Arduino Giga R1 Wifi][GigaR1WiFi]|✕|
+|[Ardino MKR Zero][MKRZero]|✕|
+|[Arduino Nano RP2040 Connect][NanoRP2040Connect]||
+
+
 
 - 1 : ``createChar()``で一部文字化けする．コンパイル時のメッセージ(以下の通り)を見ると，メモリ不足が疑われる．
 
@@ -488,6 +515,8 @@ Auto scroll
 |[Arduino Nano RP2040 Connect][NanoRP2040Connect]|||||
 
 
+
+
 |内容|意味|
 |---|---|
 |◯|動作する|
@@ -629,18 +658,28 @@ lcdFunctionReturnValue setBacklightRGB(unsigned char r, unsigned char g, unsigne
 |---|---|
 |[Grove - LCD RGB Backlight][Grove_LCD_RGB_Backlight]|5|
 |[LCDキャラクターディスプレイモジュール(16×2行バックライト付)][SC1602BSLB]|5|
-|[I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付][ACM1602NI]|3.3|
+|[LCDキャラクターディスプレイ 16×2行 3.3V仕様 バックライト付][SC1602BSLB3V3]|3.3|
 |[LCDキャラクターディスプレイモジュール 20×4行 バックライト付][SC2004CSLB]|5|
+|[I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付][ACM1602NI]|3.3|
+|[I2C接続キャラクターLCDモジュール 20×4行 バックライト付][ACM2004]|5|
 
 <!-- Grove - LCD RGB Backlight -->
 [Grove_LCD_RGB_Backlight]:https://wiki.seeedstudio.com/Grove-LCD_RGB_Backlight/
 <!-- LCDキャラクターディスプレイモジュール(16×2行バックライト付) -->
 [SC1602BSLB]:https://akizukidenshi.com/catalog/g/g100038/
-<!-- I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付 -->
-[ACM1602NI]:https://akizukidenshi.com/catalog/g/g105693/
+
+<!-- LCDキャラクターディスプレイ 16×2行 3.3V仕様 バックライト付 -->
+[SC1602BSLB3V3]:https://akizukidenshi.com/catalog/g/g114443/
 
 <!-- LCDキャラクターディスプレイモジュール 20×4行 バックライト付 -->
 [SC2004CSLB]:https://akizukidenshi.com/catalog/g/g100036/
+
+
+<!-- I2C接続キャラクターLCDモジュール 16×2行 白色バックライト付 -->
+[ACM1602NI]:https://akizukidenshi.com/catalog/g/g105693/
+
+<!-- I2Cキャラクター液晶ディスプレイ 20文字×4行 バックライト付 -->
+[ACM2004]:https://akizukidenshi.com/catalog/g/g117381/
 
 
 <!-- Arduino 本体 -->
